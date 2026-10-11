@@ -128,13 +128,14 @@ export function AtelierPreview({
                 <span>{String(i + 1).padStart(2, "0")}</span>
                 <code>
                   <CodeSyntax line={line} />
+                  {i === frame.code.length - 1 && (
+                    <span className="code-cursor" aria-hidden="true">
+                      Varun
+                    </span>
+                  )}
                 </code>
               </div>
             ))}
-            <div className="code-cursor">
-              Varun
-              <span />
-            </div>
           </div>
           <div className="workspace-terminal">
             <span className="tiny-label">State, without the guesswork</span>

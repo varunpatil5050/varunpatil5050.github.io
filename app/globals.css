@@ -673,6 +673,8 @@ button:disabled {
   font-size: 10px;
 }
 .code-line code {
+  position: relative;
+  display: inline-block;
   color: #ddd1fb;
 }
 .code-line:nth-child(3) code {
@@ -680,8 +682,9 @@ button:disabled {
 }
 .code-cursor {
   position: absolute;
-  right: 20%;
-  bottom: 22px;
+  left: 100%;
+  top: 100%;
+  margin-left: 2px;
   font:
     8px var(--font-geist-mono),
     monospace;
@@ -3067,8 +3070,6 @@ button:disabled {
   }
   .code-cursor {
     font-size: 7px;
-    bottom: 17px;
-    right: 24%;
   }
   .workspace-terminal {
     padding: 15px 14px;

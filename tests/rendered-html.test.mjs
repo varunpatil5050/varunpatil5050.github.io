@@ -32,6 +32,7 @@ test("renders Varun Patil's complete portfolio", async () => {
   assert.match(html, /Atelier/);
   assert.doesNotMatch(html, /atelier-story-pin|Scroll to unfold|data-scroll=/);
   assert.match(html, /Explore with the controls/);
+  assert.match(html, /<span class="code-cursor" aria-hidden="true">Varun<\/span><\/code>/);
   for (const label of ["Join", "Propose", "Replay"]) {
     assert.ok(html.includes(label), `Atelier retains its ${label} control`);
   }
