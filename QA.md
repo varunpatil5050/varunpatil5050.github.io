@@ -21,6 +21,23 @@ Checked the actual static production export, not only the development server.
 - Repeated build, interaction, responsive, and automated accessibility checks
   after the charcoal, mint, and parchment project palette refinement. Original
   solar component and styling remain unchanged.
+- Atelier's pinned desktop sequence checked forward and backward, including
+  manual selection persistence. Mobile and reduced-motion modes verified as
+  unpinned, with working controls.
+- All twelve architecture stage controls exercised with the keyboard. Chapter
+  anchor alignment and active reading progress verified after correcting the
+  combined scroll-padding/scroll-margin offset.
+- Actual clipboard write/read checked for the contact email, with visible
+  success feedback. Magnetic-link reset and reduced-motion behavior checked.
+- Scroll-linked featured-surface scale changed continuously with actual scroll
+  position; native cross-document title transition observed in Chrome. Normal
+  direct case navigation and reduced-motion fallback also checked.
+- New architecture routes checked at 320, 390, 768, and 1440 widths. Axe checks
+  include all three routes on desktop/mobile and every selectable stage; a
+  SyncSpace relay-label contrast edge case was fixed and retested.
+
+Local Chrome observations showed no initial layout shift in the sampled desktop
+and mobile loads. These are local checks, not production performance scores.
 
 Not tested: Safari/Firefox, actual low-power devices, a screen-reader session,
 and production Core Web Vitals. The current source uses no WebGL, external

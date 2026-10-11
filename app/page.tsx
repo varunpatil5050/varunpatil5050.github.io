@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Orbital from "./components/Orbital";
+import AtelierStory from "./components/AtelierStory";
 import {
   Header,
   Footer,
@@ -11,7 +12,6 @@ import {
   resetLight,
 } from "./components/Site";
 import {
-  AtelierPreview,
   LanguagePreview,
   EvidencePreview,
   Miniature,
@@ -60,7 +60,7 @@ export default function Home() {
         >
           <div className="hero-copy">
             <p className="eyebrow hero-eyebrow">
-              <i /> Software engineer · AI & ML systems
+              <i /> Varun Patil / Software engineer · AI & ML
             </p>
             <h1 id="hero-title">
               <span>Engineering</span>
@@ -135,6 +135,7 @@ export default function Home() {
             </div>
           </div>
           <article
+            id="atelier"
             className="feature feature-atelier"
             aria-labelledby="atelier-title"
             data-story
@@ -144,7 +145,10 @@ export default function Home() {
                 <p className="eyebrow">
                   01 — Distributed systems / Creative tools
                 </p>
-                <h3 id="atelier-title">
+                <h3
+                  id="atelier-title"
+                  style={{ viewTransitionName: "project-atelier" }}
+                >
                   Atelier<span className="title-dot">.</span>
                 </h3>
               </div>
@@ -154,14 +158,7 @@ export default function Home() {
                 <em>Many minds.</em>
               </p>
             </div>
-            <div
-              className="project-stage dark-stage"
-              data-reveal="scene"
-              onPointerMove={pointerLight}
-              onPointerLeave={resetLight}
-            >
-              <AtelierPreview />
-            </div>
+            <AtelierStory />
             <div className="project-foot" data-reveal>
               <p>
                 A collaborative coding environment where people and AI agents
@@ -186,6 +183,7 @@ export default function Home() {
             </div>
           </article>
           <article
+            id="transformer-lms"
             className="feature feature-language"
             aria-labelledby="language-title"
             data-story
@@ -198,7 +196,10 @@ export default function Home() {
             >
               <div className="language-intro">
                 <p className="eyebrow">02 — TransformerLMs / Deep learning</p>
-                <h3 id="language-title">
+                <h3
+                  id="language-title"
+                  style={{ viewTransitionName: "project-transformer-lms" }}
+                >
                   Language.
                   <br />
                   <em>From scratch.</em>
@@ -226,6 +227,7 @@ export default function Home() {
             </div>
           </article>
           <article
+            id="judgment-explained"
             className="feature feature-evidence"
             aria-labelledby="evidence-title"
             data-story
@@ -235,7 +237,10 @@ export default function Home() {
                 <p className="eyebrow">
                   03 — Judgment Explained / LLM verification
                 </p>
-                <h3 id="evidence-title">
+                <h3
+                  id="evidence-title"
+                  style={{ viewTransitionName: "project-judgment-explained" }}
+                >
                   Evidence,
                   <br />
                   <em>before eloquence.</em>
@@ -282,6 +287,7 @@ export default function Home() {
             {archive.map((project) => (
               <a
                 key={project.slug}
+                id={project.slug}
                 className={`index-project ${activeArchive === project.slug ? "is-active" : ""}`}
                 href={`/work/${project.slug}/`}
                 onPointerEnter={() => setActiveArchive(project.slug)}
@@ -291,7 +297,9 @@ export default function Home() {
                 <span className="index-number">{project.number}</span>
                 <div className="index-copy">
                   <span className="eyebrow">{project.kind}</span>
-                  <h3>{project.name}</h3>
+                  <h3 style={{ viewTransitionName: `project-${project.slug}` }}>
+                    {project.name}
+                  </h3>
                   <p>{project.description}</p>
                   <span className="index-tech">{project.tech}</span>
                 </div>
@@ -311,17 +319,18 @@ export default function Home() {
           id="about"
           aria-labelledby="about-title"
         >
-          <div className="about-mark" aria-hidden="true" data-reveal>
-            <span>V</span>
-            <i />
-            <small>
-              Engineer.
-              <br />
-              Thinker.
-              <br />
-              Builder.
-            </small>
-          </div>
+          <figure className="about-identity" data-reveal>
+            <div className="identity-monogram" aria-hidden="true">
+              <span>V</span>
+              <i />
+              <b>01 / Perspective</b>
+            </div>
+            <figcaption>
+              <strong>Varun Patil</strong>
+              <span>Software engineer. Curious by design.</span>
+              <span>Hyderabad, India ↗</span>
+            </figcaption>
+          </figure>
           <div className="about-copy">
             <p className="eyebrow" data-reveal>
               02 / A little context

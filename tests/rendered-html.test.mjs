@@ -37,6 +37,15 @@ test("renders Varun Patil's complete portfolio", async () => {
   assert.match(html, /Data Axle/);
   assert.match(html, /Shaastra Techathon/i);
   assert.match(html, /Varun-Patil-Resume\.pdf/);
+  assert.match(html, /Copy email/);
+  assert.match(html, /mailto:varunp685@gmail\.com/);
+  for (const slug of caseStudySlugs) {
+    assert.ok(html.includes(`id="${slug}"`), `${slug} has a work anchor`);
+    assert.ok(
+      html.includes(`project-${slug}`),
+      `${slug} has a transition identity`,
+    );
+  }
   assert.doesNotMatch(
     html,
     /codex-preview|Building your site|react-loading-skeleton/,
@@ -55,6 +64,12 @@ for (const slug of caseStudySlugs) {
     assert.match(html, /Built with/);
     assert.match(html, /Next exploration/);
     assert.match(html, /Varun-Patil-Resume\.pdf/);
+    assert.ok(html.includes(`project-${slug}`));
+    if (["streamrank", "signsense", "syncspace"].includes(slug)) {
+      assert.match(html, /Interactive system architecture/);
+      assert.match(html, /Select an architecture stage/);
+      assert.match(html, /Conceptual architecture illustration/);
+    }
     assert.doesNotMatch(html, /Building your site|Application error/);
   });
 }

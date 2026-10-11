@@ -65,8 +65,22 @@ function CodeSyntax({ line }: { line: string }) {
     </>
   );
 }
-export function AtelierPreview() {
-  const [step, setStep] = useState(0);
+export function AtelierPreview({
+  step: controlledStep,
+  onStepChange,
+}: {
+  step?: number;
+  onStepChange?: (step: number) => void;
+} = {}) {
+  const [internalStep, setInternalStep] = useState(0);
+  const step = Math.max(
+    0,
+    Math.min(frames.length - 1, Math.trunc(controlledStep ?? internalStep)),
+  );
+  const setStep = (nextStep: number) => {
+    if (controlledStep === undefined) setInternalStep(nextStep);
+    onStepChange?.(nextStep);
+  };
   const frame = frames[step];
   return (
     <div className="atelier-preview">

@@ -12,6 +12,9 @@ language models, distributed systems, and product thinking.
 - Interactive language evaluation results, illustrative CRDT replay, and evidence tracing
 - Project-specific charcoal IDE, mint/forest, and parchment/cocoa palettes
 - Native scroll-linked depth and staged project reveals without animation libraries
+- One reversible desktop Atelier scroll story, with manual mobile/reduced-motion controls
+- Explorable architecture diagrams for StreamRank, SignSense, and SyncSpace
+- Active chapter navigation, native project transitions, and a copy-email action
 - Experience, education, skills, and academic achievements
 - Downloadable résumé and social/contact links
 - Responsive layouts for desktop, tablet, and mobile

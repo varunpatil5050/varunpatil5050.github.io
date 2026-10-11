@@ -13,8 +13,9 @@ import {
   AtelierPreview,
   LanguagePreview,
   EvidencePreview,
-  Miniature,
 } from "./ProjectVisuals";
+import { ArchitectureExplorer, CaseStudyReadingNav } from "./CaseStudyDetails";
+import "../case-details.css";
 
 export default function CaseStudy({
   project,
@@ -36,7 +37,10 @@ export default function CaseStudy({
           <p className="eyebrow">
             Case study {project.number} / {project.category}
           </p>
-          <h1 id="case-title">
+          <h1
+            id="case-title"
+            style={{ viewTransitionName: `project-${project.slug}` }}
+          >
             {project.title}
             <span className="title-dot">.</span>
           </h1>
@@ -81,18 +85,7 @@ export default function CaseStudy({
           ) : kind === "judgment-explained" ? (
             <EvidencePreview />
           ) : (
-            <>
-              <div className="large-miniature">
-                <Miniature kind={kind} />
-              </div>
-              <p
-                className="visual-disclaimer"
-                style={{ color: "var(--muted)" }}
-              >
-                Conceptual system illustration — not a live model output or
-                product screenshot.
-              </p>
-            </>
+            <ArchitectureExplorer slug={kind} />
           )}
         </div>
         <div
@@ -110,14 +103,7 @@ export default function CaseStudy({
           ))}
         </div>
         <div className="case-body">
-          <aside className="case-contents" aria-label="Case study contents">
-            <p className="eyebrow">In this study</p>
-            {project.sections.map((section, i) => (
-              <a key={section.title} href={`#chapter-${i + 1}`}>
-                0{i + 1} / {section.title}
-              </a>
-            ))}
-          </aside>
+          <CaseStudyReadingNav sections={project.sections} />
           <div className="case-chapters">
             {project.sections.map((section, i) => (
               <section
