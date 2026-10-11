@@ -9,12 +9,22 @@ while giving technical content the breathing room of the editorial direction.
 
 Warm paper `#f5f3ed`, ink `#1c1b20`, original electric blue `#5068ff`, quiet cool
 gray and stone surfaces. The solar panel restores its original lime core
-`#c8f75f`, soft blue halo, and blue/lilac/orange/lime orbiting dots. No sage or
-green theme: lime is limited to the solar instrument. Geist provides clarity; Georgia's italic
+`#c8f75f`, soft blue halo, and blue/lilac/orange/lime orbiting dots. The page
+remains ivory; softer green is reserved for selected project surfaces.
+Geist provides clarity; Georgia's italic
 forms bring a deliberate human contrast. The orbit represents the relationship
 between software, intelligence, and product, not an arbitrary particle effect.
 
-## Motion
+## Project palettes
+
+Project-specific materials are maintained in `app/project-palettes.css`:
+Atelier uses neutral near-black IDE panels and blue/cream/green syntax;
+TransformerLMs uses fresh mint with deep forest ink; Judgment Explained uses
+parchment, cocoa and brass. Smaller studies use powder blue, peach-on-ink, and
+pale mint. The original solar panel is unchanged. These local palettes vary
+the work without recoloring the overall ivory identity.
+
+## Motion system
 
 Primary ease: `cubic-bezier(.16,1,.3,1)`. Feedback 200–400 ms, entrances
 750–1200 ms. Native scrolling remains untouched. One passive, frame-coalesced

@@ -39,6 +39,32 @@ const frames = [
     state: "Replayable history",
   },
 ];
+function CodeSyntax({ line }: { line: string }) {
+  if (line.trimStart().startsWith("//"))
+    return <span className="syntax-comment">{line}</span>;
+  return (
+    <>
+      {line
+        .split(
+          /(\b(?:const|await|connect|observe|propose|review|replay|renderReadonly)\b)/g,
+        )
+        .map((part, index) => {
+          const kind = /^(const|await)$/.test(part)
+            ? "syntax-keyword"
+            : /^(connect|observe|propose|review|replay|renderReadonly)$/.test(
+                  part,
+                )
+              ? "syntax-function"
+              : undefined;
+          return (
+            <span key={index} className={kind}>
+              {part}
+            </span>
+          );
+        })}
+    </>
+  );
+}
 export function AtelierPreview() {
   const [step, setStep] = useState(0);
   const frame = frames[step];
@@ -86,7 +112,9 @@ export function AtelierPreview() {
             {frame.code.map((line, i) => (
               <div className="code-line" key={`${step}-${i}`}>
                 <span>{String(i + 1).padStart(2, "0")}</span>
-                <code>{line}</code>
+                <code>
+                  <CodeSyntax line={line} />
+                </code>
               </div>
             ))}
             <div className="code-cursor">
@@ -103,6 +131,10 @@ export function AtelierPreview() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="ide-status">
+        <span>TypeScript · Illustrative code</span>
+        <span>Local → shared → replay</span>
       </div>
       <div className="workspace-controls">
         <span className="tiny-label">Explore the flow</span>

@@ -18,6 +18,9 @@ Checked the actual static production export, not only the development server.
   claim of a complete manual accessibility audit.
 - Desktop hero, full-page composition, individual featured projects, mobile
   hero/language preview, and desktop/mobile case-study screenshots inspected.
+- Repeated build, interaction, responsive, and automated accessibility checks
+  after the charcoal, mint, and parchment project palette refinement. Original
+  solar component and styling remain unchanged.
 
 Not tested: Safari/Firefox, actual low-power devices, a screen-reader session,
 and production Core Web Vitals. The current source uses no WebGL, external
