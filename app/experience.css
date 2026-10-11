@@ -95,11 +95,9 @@
   margin-left: -0.06em;
   user-select: none;
 }
-.identity-monogram b {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  color: #a8aa9e;
+.identity-perspective {
+  margin-top: 12px;
+  color: var(--muted);
   font:
     9px/1.6 var(--font-geist-mono),
     monospace;
@@ -271,9 +269,6 @@
   }
   .identity-monogram > span {
     font-size: 64px;
-  }
-  .identity-monogram b {
-    display: none;
   }
   .about-identity figcaption {
     padding: 0;

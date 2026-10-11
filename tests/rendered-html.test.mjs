@@ -36,6 +36,10 @@ test("renders Varun Patil's complete portfolio", async () => {
   assert.equal((html.match(/class="feature feature-/g) ?? []).length, 5);
   assert.match(html, /class="brand-mark">VP</);
   assert.match(html, /class="identity-monogram"[^>]*><span>VP<\/span>/);
+  assert.match(
+    html,
+    /class="identity-monogram"[^>]*><span>VP<\/span><\/div><p class="identity-perspective">01 \/ Perspective<\/p>/,
+  );
   assert.doesNotMatch(html, /VP \/ AN ORBIT OF IDEAS|✳/);
   assert.equal((html.match(/data-landmark="\d+"/g) ?? []).length, 21);
   assert.doesNotMatch(html, /class="language-ring|class="about-mark/);

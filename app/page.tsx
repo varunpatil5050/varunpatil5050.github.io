@@ -331,9 +331,11 @@ export default function Home() {
           aria-labelledby="about-title"
         >
           <figure className="about-identity" data-reveal>
-            <div className="identity-monogram" aria-hidden="true">
-              <span>VP</span>
-              <b>01 / Perspective</b>
+            <div className="identity-artwork">
+              <div className="identity-monogram" aria-hidden="true">
+                <span>VP</span>
+              </div>
+              <p className="identity-perspective">01 / Perspective</p>
             </div>
             <figcaption>
               <strong>Varun Patil</strong>
