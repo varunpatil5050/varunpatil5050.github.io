@@ -1,4 +1,19 @@
 {
+  "_case-details-BDGdp9qg.js": {
+    "file": "_next/static/chunks/case-details-BDGdp9qg.js",
+    "name": "case-details",
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ],
+    "css": [
+      "_next/static/css/case-details.DOLr2ECO.css"
+    ]
+  },
+  "_case-details.DOLr2ECO.css": {
+    "file": "_next/static/css/case-details.DOLr2ECO.css",
+    "src": "_case-details.DOLr2ECO.css"
+  },
   "_framework-BgSIrAUN.js": {
     "file": "_next/static/chunks/framework-BgSIrAUN.js",
     "name": "framework",
@@ -10,18 +25,44 @@
     "file": "_next/static/chunks/rolldown-runtime-C60lm6uB.js",
     "name": "rolldown-runtime"
   },
-  "app/page.tsx": {
-    "file": "_next/static/chunks/page-DF5AjOg7.js",
-    "name": "page",
-    "src": "app/page.tsx",
+  "app/components/CaseStudy.tsx": {
+    "file": "_next/static/chunks/CaseStudy-e1zOV1FV.js",
+    "name": "CaseStudy",
+    "src": "app/components/CaseStudy.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_case-details-BDGdp9qg.js",
+      "app/components/Site.tsx",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
+  "app/components/Site.tsx": {
+    "file": "_next/static/chunks/Site-BTswBxSU.js",
+    "name": "Site",
+    "src": "app/components/Site.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-C60lm6uB.js",
       "_framework-BgSIrAUN.js"
     ]
   },
+  "app/page.tsx": {
+    "file": "_next/static/chunks/page-4_-t6zss.js",
+    "name": "page",
+    "src": "app/page.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_case-details-BDGdp9qg.js",
+      "app/components/Site.tsx",
+      "_framework-BgSIrAUN.js"
+    ],
+    "css": [
+      "_next/static/css/page.8jc92Shm.css"
+    ]
+  },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-xpZh66nG.js",
+    "file": "_next/static/chunks/layout-segment-context-Bp0hoacp.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -32,7 +73,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-DP7myWo4.js",
+    "file": "_next/static/chunks/index-BSTM_4tN.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -43,7 +84,9 @@
     "dynamicImports": [
       "virtual:vinext-app-browser-entry",
       "node_modules/vinext/dist/shims/layout-segment-context.js",
-      "app/page.tsx"
+      "app/components/CaseStudy.tsx",
+      "app/page.tsx",
+      "app/components/Site.tsx"
     ]
   }
 }
