@@ -2,10 +2,6 @@
   position: relative;
 }
 
-.atelier-story-pin {
-  position: relative;
-}
-
 .atelier-story-caption {
   display: flex;
   align-items: center;
@@ -40,34 +36,9 @@
   background: #377da7;
 }
 
-.atelier-story-scroll-hint,
 .atelier-story-control-hint {
   margin-left: auto;
   text-align: right;
-}
-
-.atelier-story-scroll-hint {
-  display: none;
-}
-
-@media (min-width: 1101px) and (min-height: 800px) and (prefers-reduced-motion: no-preference) {
-  .atelier-story[data-scroll="true"] {
-    height: 175svh;
-    max-height: 180svh;
-  }
-
-  .atelier-story[data-scroll="true"] .atelier-story-pin {
-    position: sticky;
-    top: 108px;
-  }
-
-  .atelier-story[data-scroll="true"] .atelier-story-scroll-hint {
-    display: inline;
-  }
-
-  .atelier-story[data-scroll="true"] .atelier-story-control-hint {
-    display: none;
-  }
 }
 
 @media (max-width: 600px) {

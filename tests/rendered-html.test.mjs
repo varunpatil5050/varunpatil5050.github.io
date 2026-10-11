@@ -30,6 +30,11 @@ test("renders Varun Patil's complete portfolio", async () => {
   assert.match(html, /work\/transformer-lms/);
   assert.match(html, /Judgment Explained/);
   assert.match(html, /Atelier/);
+  assert.doesNotMatch(html, /atelier-story-pin|Scroll to unfold|data-scroll=/);
+  assert.match(html, /Explore with the controls/);
+  for (const label of ["Join", "Propose", "Replay"]) {
+    assert.ok(html.includes(label), `Atelier retains its ${label} control`);
+  }
   assert.match(html, /StreamRank/);
   assert.match(html, /SignSense/);
   assert.doesNotMatch(html, /SyncSpace|syncspace|index-project/);
