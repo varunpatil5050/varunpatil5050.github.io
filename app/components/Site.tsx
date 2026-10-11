@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import type { PointerEvent, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export function Arrow({ down = false }: { down?: boolean }) {
   return (
@@ -41,25 +41,6 @@ export function ExternalLink({
       {children}
     </a>
   );
-}
-export function pointerLight(event: PointerEvent<HTMLElement>) {
-  if (
-    event.pointerType === "touch" ||
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  )
-    return;
-  const element = event.currentTarget,
-    rect = element.getBoundingClientRect();
-  const x = (event.clientX - rect.left) / rect.width,
-    y = (event.clientY - rect.top) / rect.height;
-  element.style.setProperty("--mx", `${x * 100}%`);
-  element.style.setProperty("--my", `${y * 100}%`);
-  element.style.setProperty("--rx", `${(0.5 - y) * 2.5}deg`);
-  element.style.setProperty("--ry", `${(x - 0.5) * 2.5}deg`);
-}
-export function resetLight(event: PointerEvent<HTMLElement>) {
-  event.currentTarget.style.setProperty("--rx", "0deg");
-  event.currentTarget.style.setProperty("--ry", "0deg");
 }
 export function usePortfolioMotion() {
   useEffect(() => {
@@ -105,7 +86,7 @@ export function usePortfolioMotion() {
       (entries) =>
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            entry.target.setAttribute("data-visible", "true");
             observer.unobserve(entry.target);
           }
         }),
@@ -216,7 +197,7 @@ export function Header({ detail = false }: { detail?: boolean }) {
           href={detail ? "/" : "#top"}
           aria-label="Varun Patil — home"
         >
-          <span className="brand-mark">V</span>
+          <span className="brand-mark">VP</span>
           <span>Varun Patil</span>
         </a>
         <nav
@@ -298,12 +279,7 @@ export function Footer({ detail = false }: { detail?: boolean }) {
     copyTimeout.current = setTimeout(() => setCopyState("idle"), 3500);
   }
   return (
-    <footer
-      className="contact-section"
-      id="contact"
-      onPointerMove={pointerLight}
-      onPointerLeave={resetLight}
-    >
+    <footer className="contact-section" id="contact">
       <div className="section-shell">
         <div className="contact-top">
           <p className="eyebrow">

@@ -15,13 +15,7 @@
   border-radius: 24px;
   padding: clamp(24px, 4.5vw, 60px);
   color: var(--diagram-ink);
-  background:
-    radial-gradient(
-      ellipse at var(--mx, 65%) var(--my, 20%),
-      color-mix(in srgb, var(--diagram-accent) 8%, transparent) 0%,
-      transparent 62%
-    ),
-    var(--diagram-paper);
+  background: var(--diagram-paper);
   border: 1px solid var(--diagram-line);
 }
 .explorer-signsense {
@@ -36,18 +30,6 @@
   --diagram-caption: #c8a99a;
   --diagram-surface: #282222;
 }
-.explorer-syncspace {
-  --diagram-paper: #e5efeb;
-  --diagram-ink: #1b3e36;
-  --diagram-muted: #526e63;
-  --diagram-line: #afc4b9;
-  --diagram-accent: #3d7764;
-  --diagram-soft: #d3e5dc;
-  --diagram-shape: #5c8071;
-  --diagram-focus: #345d4e;
-  --diagram-caption: #536f65;
-  --diagram-surface: #edf5f0;
-}
 .architecture-explorer-heading {
   display: flex;
   align-items: start;
@@ -59,10 +41,6 @@
 .architecture-caption,
 .stage-description > span,
 .stage-io > div > span,
-.network-editor > small,
-.network-relay > small,
-.network-connection > small,
-.network-presence,
 .pipeline-position {
   font-family: var(--font-geist-mono), monospace;
   font-size: 10px;
@@ -203,9 +181,23 @@
   height: 16px;
   border-radius: 3px;
 }
-.signal-pipeline .pipeline-glyph > svg {
-  height: 100px;
-  width: 100px;
+.landmark-count {
+  text-align: center;
+}
+.landmark-count > span {
+  display: block;
+  font-size: 47px;
+  line-height: 1;
+  font-weight: 450;
+  letter-spacing: -0.06em;
+}
+.landmark-count > small {
+  display: block;
+  font:
+    8px/1.5 var(--font-geist-mono),
+    monospace;
+  margin-top: 8px;
+  white-space: nowrap;
 }
 .signal-pipeline .glyph-1 {
   display: grid;
@@ -353,142 +345,27 @@
   max-width: 700px;
   margin-top: 31px;
 }
-.architecture-network {
-  display: grid;
-  grid-template-columns: 1fr 0.65fr 1.1fr 0.65fr 1fr;
-  align-items: center;
-  gap: 10px;
-  margin: 50px 0 33px;
+.case-secondary-architecture {
+  max-width: 1100px;
+  margin: 0 auto 80px;
 }
-.network-editor {
-  text-align: center;
-  color: var(--diagram-muted);
+.architecture-explorer-compact {
+  padding: clamp(24px, 3vw, 40px);
 }
-.network-document {
-  width: 95px;
-  height: 112px;
-  border: 1px solid var(--diagram-shape);
-  border-radius: 7px;
-  margin: 0 auto 16px;
-  padding: 28px 16px;
-  position: relative;
-  transition:
-    border-color 0.3s,
-    background 0.3s;
+.architecture-explorer-compact .architecture-explorer-heading h2 {
+  font-size: clamp(27px, 2.8vw, 36px);
 }
-.network-document > i {
-  height: 3px;
-  background: var(--diagram-shape);
-  display: block;
-  margin-bottom: 9px;
-  border-radius: 1px;
+.architecture-explorer-compact .architecture-pipeline {
+  margin: 22px 0;
+  padding-block: 5px;
 }
-.network-document > i:nth-child(2) {
-  width: 60%;
+.architecture-explorer-compact .pipeline-glyph {
+  height: 75px;
+  padding-block: 4px;
+  margin-block: 5px 12px;
 }
-.network-document > i:nth-child(3) {
-  width: 80%;
-}
-.network-document > span {
-  width: 5px;
-  height: 18px;
-  border-left: 2px solid var(--diagram-accent);
-  position: absolute;
-  top: 60px;
-  right: 20px;
-  transition: opacity 0.3s;
-}
-.network-editor > span {
-  display: block;
-  font-size: 12px;
-  color: var(--diagram-ink);
-}
-.network-editor > small {
-  display: block;
-  margin-top: 7px;
-  font-size: 8px;
-}
-.network-connection {
-  text-align: center;
-}
-.network-connection > span {
-  font-size: 30px;
-  color: var(--diagram-shape);
-  display: block;
-  transition: color 0.3s;
-}
-.network-connection > small {
-  font-size: 8px;
-  color: var(--diagram-muted);
-  display: block;
-}
-.network-relay {
-  min-height: 130px;
-  border: 1px solid var(--diagram-shape);
-  border-radius: 13px;
-  text-align: center;
-  padding: 20px 8px;
-  background: var(--diagram-surface);
-  transition:
-    border-color 0.3s,
-    background 0.3s;
-}
-.relay-symbol {
-  display: block;
-  color: var(--diagram-accent);
-  font-size: 29px;
-  margin-bottom: 12px;
-}
-.network-relay > b {
-  font-size: 12px;
-  font-weight: 450;
-  color: var(--diagram-ink);
-  display: block;
-}
-.network-relay > small {
-  color: var(--diagram-muted);
-  display: block;
-  font-size: 8px;
-  margin-top: 8px;
-}
-.network-presence {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  color: var(--diagram-muted);
-  font-size: 9px;
-  margin-top: 12px;
-}
-.network-presence > i {
-  flex: 1;
-  max-width: 180px;
-  height: 1px;
-  background: var(--diagram-line);
-}
-.architecture-network[data-stage="0"] .network-editor-local .network-document,
-.architecture-network[data-stage="1"] .network-document,
-.architecture-network[data-stage="2"] .network-relay {
-  border-color: var(--diagram-accent);
-  background: var(--diagram-soft);
-}
-.architecture-network[data-stage="1"] .network-connection > span,
-.architecture-network[data-stage="2"] .network-connection > span {
-  color: var(--diagram-accent);
-}
-.architecture-network[data-stage="2"] .network-relay > small {
-  color: var(--diagram-ink);
-}
-.architecture-network:not([data-stage="3"]) .network-document > span {
-  opacity: 0.25;
-}
-.architecture-network[data-stage="3"] .network-presence {
-  color: var(--diagram-ink);
-}
-.architecture-network[data-stage="3"] .network-document > span {
-  box-shadow: 0 0 12px
-    color-mix(in srgb, var(--diagram-accent) 25%, transparent);
+.architecture-explorer-compact .architecture-stage-detail {
+  min-height: 180px;
 }
 .case-main .case-reading-nav {
   gap: 0;
@@ -670,9 +547,12 @@
   .ranking-pipeline .glyph-3 > i {
     height: 12px;
   }
-  .signal-pipeline .pipeline-glyph > svg {
-    width: 65px;
-    height: 65px;
+  .landmark-count > span {
+    font-size: 35px;
+  }
+  .landmark-count > small {
+    font-size: 6px;
+    margin-top: 6px;
   }
   .signal-pipeline .glyph-1 {
     grid-template-columns: repeat(4, 9px);
@@ -749,66 +629,17 @@
     font-size: 8px;
     margin-top: 24px;
   }
-  .architecture-network {
-    grid-template-columns: 1fr 28px 1fr 28px 1fr;
-    gap: 3px;
-    margin-block: 30px 25px;
+  .case-secondary-architecture {
+    margin-bottom: 45px;
   }
-  .network-document {
-    width: 57px;
-    height: 78px;
-    padding: 19px 9px;
-    margin-bottom: 12px;
+  .architecture-explorer-compact {
+    padding: 25px 18px 22px;
   }
-  .network-document > i {
-    height: 2px;
-    margin-bottom: 7px;
+  .architecture-explorer-compact .pipeline-glyph {
+    height: 62px;
   }
-  .network-document > span {
-    top: 43px;
-    right: 12px;
-    height: 12px;
-  }
-  .network-editor > span {
-    font-size: 10px;
-  }
-  .network-editor > small {
-    font-size: 7px;
-    line-height: 1.8;
-    max-width: 75px;
-    margin-inline: auto;
-  }
-  .network-connection > span {
-    font-size: 21px;
-  }
-  .network-connection > small {
-    display: none;
-  }
-  .network-relay {
-    min-height: 100px;
-    padding: 12px 5px;
-    border-radius: 9px;
-  }
-  .relay-symbol {
-    font-size: 24px;
-    margin-bottom: 8px;
-  }
-  .network-relay > b {
-    font-size: 9px;
-    line-height: 1.6;
-  }
-  .network-relay > small {
-    font-size: 7px;
-    line-height: 1.7;
-  }
-  .network-presence {
-    font-size: 7px;
-    gap: 7px;
-    margin-top: 14px;
-  }
-  .network-presence > span {
-    max-width: 170px;
-    text-align: center;
+  .architecture-explorer-compact .architecture-stage-detail {
+    min-height: 0;
   }
   .case-main .case-reading-nav a {
     font-size: 10px;

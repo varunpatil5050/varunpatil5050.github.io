@@ -1,54 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Orbital from "./components/Orbital";
 import AtelierStory from "./components/AtelierStory";
-import {
-  Header,
-  Footer,
-  Arrow,
-  usePortfolioMotion,
-  pointerLight,
-  resetLight,
-} from "./components/Site";
-import {
-  LanguagePreview,
-  EvidencePreview,
-  Miniature,
-} from "./components/ProjectVisuals";
-
-const archive = [
-  {
-    slug: "streamrank",
-    name: "StreamRank",
-    kind: "Recommendation systems",
-    description:
-      "From 12.5 million interactions to a four-stage recommendation funnel.",
-    tech: "PyTorch / Kafka / FAISS / Redis",
-    number: "04",
-  },
-  {
-    slug: "signsense",
-    name: "SignSense",
-    kind: "Applied computer vision",
-    description:
-      "Turning the motion of a hand into a real-time language signal.",
-    tech: "PyTorch / MediaPipe / FastAPI",
-    number: "05",
-  },
-  {
-    slug: "syncspace",
-    name: "SyncSpace",
-    kind: "Local-first collaboration",
-    description: "Local edits. Shared state. A simpler way to collaborate.",
-    tech: "CodeMirror 6 / Yjs / WebSockets",
-    number: "06",
-  },
-];
+import HandScan from "./components/HandScan";
+import { ArchitectureExplorer } from "./components/CaseStudyDetails";
+import "./case-details.css";
+import { Header, Footer, Arrow, usePortfolioMotion } from "./components/Site";
+import { LanguagePreview, EvidencePreview } from "./components/ProjectVisuals";
 
 export default function Home() {
   usePortfolioMotion();
-  const [activeArchive, setActiveArchive] = useState<string | null>(null);
   return (
     <>
       <Header />
@@ -188,12 +149,7 @@ export default function Home() {
             aria-labelledby="language-title"
             data-story
           >
-            <div
-              className="language-composition"
-              onPointerMove={pointerLight}
-              onPointerLeave={resetLight}
-              data-reveal="scene"
-            >
+            <div className="language-composition" data-reveal="scene">
               <div className="language-intro">
                 <p className="eyebrow">02 — TransformerLMs / Deep learning</p>
                 <h3
@@ -253,12 +209,7 @@ export default function Home() {
                   Follow the evidence <Arrow />
                 </a>
               </div>
-              <div
-                className="evidence-art"
-                data-reveal="scene"
-                onPointerMove={pointerLight}
-                onPointerLeave={resetLight}
-              >
+              <div className="evidence-art" data-reveal="scene">
                 <EvidencePreview />
               </div>
             </div>
@@ -275,43 +226,103 @@ export default function Home() {
               <small>Against a generic evidence-checking baseline</small>
             </div>
           </article>
-          <div className="archive-intro" data-reveal>
-            <p className="eyebrow">More explorations</p>
-            <p>
-              Different problems.
-              <br />
-              The same attention to detail.
-            </p>
-          </div>
-          <div className="project-index">
-            {archive.map((project) => (
-              <a
-                key={project.slug}
-                id={project.slug}
-                className={`index-project ${activeArchive === project.slug ? "is-active" : ""}`}
-                href={`/work/${project.slug}/`}
-                onPointerEnter={() => setActiveArchive(project.slug)}
-                onPointerLeave={() => setActiveArchive(null)}
-                data-reveal
-              >
-                <span className="index-number">{project.number}</span>
-                <div className="index-copy">
-                  <span className="eyebrow">{project.kind}</span>
-                  <h3 style={{ viewTransitionName: `project-${project.slug}` }}>
-                    {project.name}
-                  </h3>
-                  <p>{project.description}</p>
-                  <span className="index-tech">{project.tech}</span>
-                </div>
-                <div className="index-miniature">
-                  <Miniature kind={project.slug} />
-                </div>
-                <span className="index-arrow">
-                  <Arrow />
-                </span>
+          <article
+            id="streamrank"
+            className="feature feature-streamrank"
+            aria-labelledby="streamrank-title"
+            data-story
+          >
+            <div className="project-heading" data-reveal>
+              <div>
+                <p className="eyebrow">
+                  04 — Machine learning / Recommendation systems
+                </p>
+                <h3
+                  id="streamrank-title"
+                  style={{ viewTransitionName: "project-streamrank" }}
+                >
+                  StreamRank<span className="title-dot">.</span>
+                </h3>
+              </div>
+              <p>
+                A better shortlist.
+                <br />
+                <em>A broader view.</em>
+              </p>
+            </div>
+            <div className="streamrank-stage" data-reveal="scene">
+              <ArchitectureExplorer slug="streamrank" />
+            </div>
+            <div className="project-foot" data-reveal>
+              <p>
+                Retrieval finds the candidates. Ranking brings relevance.
+                Diversity adds variety. Serving completes the system. Four
+                distinct responsibilities, trained on 12.5 million interactions.
+              </p>
+              <a className="pill-link" href="/work/streamrank/">
+                Follow the pipeline <Arrow />
               </a>
-            ))}
-          </div>
+            </div>
+            <div className="project-facts" data-reveal>
+              <span>
+                <b>12.5M</b> training interactions
+              </span>
+              <span>
+                <b>4</b> recommendation stages
+              </span>
+              <small>PyTorch / Kafka / FAISS / Redis</small>
+            </div>
+          </article>
+          <article
+            id="signsense"
+            className="feature feature-signsense"
+            aria-labelledby="signsense-title"
+            data-story
+          >
+            <div className="project-heading" data-reveal>
+              <div>
+                <p className="eyebrow">
+                  05 — Computer vision / Temporal deep learning
+                </p>
+                <h3
+                  id="signsense-title"
+                  style={{ viewTransitionName: "project-signsense" }}
+                >
+                  SignSense<span className="title-dot">.</span>
+                </h3>
+              </div>
+              <p>
+                Movement.
+                <br />
+                <em>Made legible.</em>
+              </p>
+            </div>
+            <div className="signsense-stage" data-reveal="scene">
+              <HandScan />
+            </div>
+            <div className="project-foot" data-reveal>
+              <p>
+                From visual landmarks to temporal understanding. An ASL
+                recognition pipeline with shared feature normalization, sequence
+                models, and confidence-gated streaming inference.
+              </p>
+              <a className="pill-link" href="/work/signsense/">
+                Explore SignSense <Arrow />
+              </a>
+            </div>
+            <div className="project-facts" data-reveal>
+              <span>
+                <b>68%</b> test accuracy
+              </span>
+              <span>
+                <b>0.92</b> held-out ROC-AUC
+              </span>
+              <span>
+                <b>&lt;15 ms</b> inference / frame
+              </span>
+              <small>10-sign LSTM experiment · Reported project results</small>
+            </div>
+          </article>
         </section>
 
         <section
@@ -321,8 +332,7 @@ export default function Home() {
         >
           <figure className="about-identity" data-reveal>
             <div className="identity-monogram" aria-hidden="true">
-              <span>V</span>
-              <i />
+              <span>VP</span>
               <b>01 / Perspective</b>
             </div>
             <figcaption>

@@ -154,7 +154,7 @@ button:disabled {
   background: var(--ink);
   color: var(--paper);
   font:
-    italic 27px Georgia,
+    italic 21px Georgia,
     serif;
 }
 .main-nav {
@@ -442,27 +442,6 @@ button:disabled {
   border: 1px solid #302c3f;
   padding: 45px 60px 24px;
   box-shadow: 0 28px 65px -45px #2c244a70;
-}
-.project-stage::after,
-.language-composition::after,
-.evidence-art::after {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    600px circle at var(--mx, 50%) var(--my, 40%),
-    #a08aff16,
-    transparent 65%
-  );
-  content: "";
-  opacity: 0;
-  transition: opacity 0.4s;
-  z-index: 3;
-}
-.project-stage:hover::after,
-.language-composition:hover::after,
-.evidence-art:hover::after {
-  opacity: 1;
 }
 .project-foot {
   display: flex;
@@ -876,21 +855,6 @@ button:disabled {
   z-index: 2;
   letter-spacing: -0.08em;
   animation: soft-in 0.4s var(--ease);
-}
-.language-ring {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border: 1px solid #8670a433;
-  border-radius: 50%;
-  width: 210px;
-  height: 210px;
-  transform: translate(-50%, -50%) rotate(-25deg);
-}
-.ring-two {
-  width: 290px;
-  height: 140px;
-  transform: translate(-50%, -50%) rotate(30deg);
 }
 .model-label {
   position: absolute;
@@ -1613,18 +1577,6 @@ button:disabled {
   color: #f1edf6;
   padding: 55px 0 30px;
 }
-.contact-section::before {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  content: "";
-  background: radial-gradient(
-    ellipse at var(--mx, 85%) var(--my, 75%),
-    #7060a91b,
-    transparent 65%
-  );
-  pointer-events: none;
-}
 .contact-top {
   display: flex;
   justify-content: space-between;
@@ -1751,16 +1703,16 @@ button:disabled {
     opacity 0.9s var(--ease),
     transform 1.2s var(--ease);
 }
-.motion-ready [data-reveal].is-visible {
+.motion-ready [data-reveal][data-visible="true"] {
   opacity: 1;
   transform: none;
 }
-.motion-ready .dark-stage.is-visible .atelier-preview {
+.motion-ready .dark-stage[data-visible="true"] .atelier-preview {
   transform: perspective(1500px) rotateX(var(--rx, 0deg))
     rotateY(var(--ry, 0deg))
     translateY(calc((1 - var(--scene-progress, 1)) * 16px));
 }
-.motion-ready .about-mark.is-visible {
+.motion-ready .about-mark[data-visible="true"] {
   transform: translateY(calc((1 - var(--scene-progress, 1)) * 8px));
 }
 @keyframes hero-arrive {
@@ -2294,7 +2246,7 @@ button:disabled {
   .brand-mark {
     width: 39px;
     height: 39px;
-    font-size: 24px;
+    font-size: 19px;
     border-radius: 10px;
   }
   .brand {
@@ -2846,7 +2798,7 @@ button:disabled {
   .brand-mark {
     width: 36px;
     height: 36px;
-    font-size: 23px;
+    font-size: 18px;
   }
   .brand {
     gap: 8px;
@@ -4183,7 +4135,7 @@ button:disabled {
   }
   .motion-ready [data-reveal],
   .motion-ready [data-reveal="scene"],
-  .motion-ready .dark-stage.is-visible .atelier-preview,
+  .motion-ready .dark-stage[data-visible="true"] .atelier-preview,
   .language-graphic,
   .evidence-sheet {
     opacity: 1 !important;

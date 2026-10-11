@@ -1,0 +1,361 @@
+.hand-scan {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #45413c;
+  border-radius: 22px;
+  background: #1b1d1d;
+  color: #e9d7c8;
+}
+
+.hand-scan-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 22px 28px;
+  border-bottom: 1px solid #3d3c37;
+  color: #c7b8aa;
+  font:
+    10px / 1.4 var(--font-geist-mono, ui-monospace),
+    monospace;
+  letter-spacing: 0.04em;
+}
+
+.hand-scan-topline > span:last-child {
+  color: #e3b89a;
+  white-space: nowrap;
+}
+
+.hand-scan-view {
+  position: relative;
+  padding: 10px 25px 48px;
+}
+
+.hand-scan-svg {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.hand-scan-outline {
+  fill: #d9b6950f;
+  stroke: #b18f75;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.hand-scan-crease {
+  fill: none;
+  stroke: #b18f7533;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.hand-scan-connections line {
+  stroke: #aa826776;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  transition:
+    stroke 200ms ease,
+    stroke-width 200ms ease;
+}
+
+.hand-scan-connections line[data-selected="true"] {
+  stroke: #f2c5a3;
+  stroke-width: 2.4;
+}
+
+.hand-scan-landmarks circle {
+  fill: #bd9477;
+  stroke: #1b1d1d;
+  stroke-width: 1.4;
+  transition: fill 200ms ease;
+}
+
+.hand-scan-landmarks text {
+  fill: #a99480;
+  font:
+    10px / 1 var(--font-geist-mono, ui-monospace),
+    monospace;
+  transition: fill 200ms ease;
+}
+
+.hand-scan-landmarks g[data-selected="true"] circle {
+  fill: #ffddbe;
+}
+
+.hand-scan-landmarks g[data-selected="true"] text {
+  fill: #ffddbe;
+  font-size: 12px;
+}
+
+.hand-scan-landmarks g[data-landmark="0"] circle {
+  fill: #f2c5a3;
+}
+
+.hand-scan-wrist-label {
+  fill: #c3a58d;
+  font:
+    10px / 1 var(--font-geist-mono, ui-monospace),
+    monospace;
+  letter-spacing: 0.08em;
+}
+
+.hand-scan-beam {
+  transform: translateY(86px);
+  animation: hand-scan-sweep 6s ease-in-out infinite;
+  animation-play-state: paused;
+  pointer-events: none;
+}
+
+.hand-scan[data-running="true"] .hand-scan-beam {
+  animation-play-state: running;
+}
+
+.hand-scan-beam rect {
+  fill: #f1bd940a;
+}
+
+.hand-scan-beam line {
+  stroke: #f1bd946e;
+  stroke-width: 1;
+}
+
+.hand-scan-beam path {
+  stroke: #edbd97;
+  stroke-width: 1;
+}
+
+.hand-scan-view-note {
+  position: absolute;
+  left: 28px;
+  bottom: 22px;
+  color: #a89785;
+  font:
+    9px / 1.4 var(--font-geist-mono, ui-monospace),
+    monospace;
+  letter-spacing: 0.06em;
+}
+
+.hand-scan-pause {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #cdb6a3;
+  font:
+    10px / 1.4 var(--font-geist-mono, ui-monospace),
+    monospace;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.hand-scan-pause > span {
+  min-width: 12px;
+  font-size: 14px;
+}
+
+.hand-scan-pause:hover:not(:disabled) {
+  color: #ffddbe;
+}
+
+.hand-scan-pause:disabled {
+  cursor: default;
+  color: #a89785;
+}
+
+.hand-scan-anatomy {
+  padding: 20px 28px 22px;
+  border-top: 1px solid #3d3c37;
+}
+
+.hand-scan-fingers {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.hand-scan-fingers button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 6px;
+  border: 1px solid #4b433b;
+  border-radius: 6px;
+  background: transparent;
+  color: #b5a190;
+  font:
+    11px / 1.2 var(--font-geist-sans, Arial),
+    sans-serif;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.hand-scan-fingers button:hover {
+  border-color: #ae896a;
+  color: #eed1b6;
+}
+
+.hand-scan-fingers button[aria-pressed="true"] {
+  border-color: #c8a17f;
+  background: #edc39f;
+  color: #29241e;
+}
+
+.hand-scan-fingers button:focus-visible,
+.hand-scan-pause:focus-visible,
+.hand-scan-caption a:focus-visible {
+  outline: 2px solid #f4c7a5;
+  outline-offset: 3px;
+}
+
+.hand-scan-readout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  min-height: 43px;
+  margin-top: 18px;
+}
+
+.hand-scan-readout strong {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  color: #edd7c3;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.hand-scan-readout strong span {
+  color: #bba18a;
+  font:
+    10px / 1.4 var(--font-geist-mono, ui-monospace),
+    monospace;
+}
+
+.hand-scan-readout p {
+  margin: 0;
+  color: #bba18a;
+  font:
+    10px / 1.4 var(--font-geist-mono, ui-monospace),
+    monospace;
+}
+
+.hand-scan-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 15px;
+  padding: 15px 28px;
+  border-top: 1px solid #3d3c37;
+  background: #181a1a;
+  color: #aa9989;
+  font:
+    9px / 1.7 var(--font-geist-mono, ui-monospace),
+    monospace;
+}
+
+.hand-scan-caption p {
+  max-width: 270px;
+  margin: 0;
+}
+
+.hand-scan-caption a {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  color: #d4b79d;
+  text-underline-offset: 4px;
+}
+
+.hand-scan-caption a:hover {
+  text-decoration: underline;
+}
+
+@keyframes hand-scan-sweep {
+  0%,
+  100% {
+    transform: translateY(86px);
+  }
+  50% {
+    transform: translateY(493px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hand-scan {
+    border-radius: 16px;
+  }
+  .hand-scan-topline {
+    padding: 18px;
+    font-size: 9px;
+    gap: 8px;
+  }
+  .hand-scan-view {
+    padding: 7px 10px 45px;
+  }
+  .hand-scan-landmarks text {
+    font-size: 13px;
+  }
+  .hand-scan-landmarks g[data-selected="true"] text {
+    font-size: 15px;
+  }
+  .hand-scan-view-note {
+    left: 18px;
+    font-size: 8px;
+    bottom: 22px;
+  }
+  .hand-scan-pause {
+    right: 10px;
+    bottom: 9px;
+    font-size: 9px;
+  }
+  .hand-scan-anatomy {
+    padding: 18px;
+  }
+  .hand-scan-fingers {
+    gap: 4px;
+  }
+  .hand-scan-fingers button {
+    font-size: 10px;
+    padding-inline: 3px;
+  }
+  .hand-scan-readout {
+    margin-top: 16px;
+  }
+  .hand-scan-caption {
+    padding: 14px 18px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hand-scan-beam {
+    animation: none;
+    transform: translateY(320px);
+  }
+  .hand-scan-landmarks circle,
+  .hand-scan-landmarks text,
+  .hand-scan-connections line,
+  .hand-scan-fingers button,
+  .hand-scan-pause {
+    transition: none;
+  }
+}

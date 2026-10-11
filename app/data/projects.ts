@@ -313,55 +313,7 @@ export const projects: Project[] = [
       },
     ],
   },
-  {
-    slug: "syncspace",
-    number: "06",
-    title: "SyncSpace",
-    category: "Local-first software · Collaborative editing",
-    summary:
-      "A local-first code editor with CRDT synchronization, shared cursors, and a stateless WebSocket relay, built with CodeMirror 6, Yjs, and FastAPI.",
-    role: "Independent project",
-    technologies: ["CodeMirror 6", "Yjs", "FastAPI", "WebSockets", "CRDTs"],
-    github: "https://github.com/varunpatil5050/SyncSpace",
-    metrics: [
-      { value: "Local-first", label: "editing model" },
-      { value: "CRDT", label: "shared-document synchronization" },
-    ],
-    sections: [
-      {
-        title: "The objective",
-        body: [
-          "Let collaborators edit a shared code document without making each keystroke depend on a server round trip. Local editing and synchronization are distinct responsibilities.",
-        ],
-      },
-      {
-        title: "A small, deliberate architecture",
-        body: [
-          "CodeMirror 6 provides the editing surface. Yjs manages the shared CRDT document and synchronization, while a FastAPI WebSocket relay carries updates between connected collaborators. Shared cursors expose live collaboration context.",
-        ],
-        points: [
-          "Local CodeMirror editor ↔ Yjs shared document.",
-          "Document updates ↔ stateless WebSocket relay ↔ collaborator documents.",
-          "Shared cursors provide presence alongside document edits.",
-        ],
-      },
-      {
-        title: "Keep the relay simple",
-        body: [
-          "The stateless relay transports synchronization messages rather than acting as the document’s editing engine. CRDT-based state management places convergence in the shared-document layer.",
-          "The architectural trade-off is a clear separation between transport and document synchronization; a stateless relay alone should not be mistaken for durable document storage.",
-        ],
-      },
-      {
-        title: "What this project demonstrates",
-        body: [
-          "The project demonstrates local-first editing, shared cursors, and CRDT synchronization through a lightweight relay. The repository provides the implementation reference.",
-          "The central engineering idea is a small transport layer around a shared-document model, keeping local interaction separate from network delivery.",
-        ],
-      },
-    ],
-  },
-];
+].sort((a, b) => Number(a.number) - Number(b.number));
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

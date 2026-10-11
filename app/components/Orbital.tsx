@@ -29,22 +29,18 @@ export default function Orbital() {
     };
   }, []);
 
-  function moveLight(event: PointerEvent<HTMLDivElement>) {
+  function moveDepth(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType === "touch" || reducedMotion) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width;
     const y = (event.clientY - bounds.top) / bounds.height;
     event.currentTarget.style.setProperty("--orbit-x", `${(x - 0.5) * 6}deg`);
     event.currentTarget.style.setProperty("--orbit-y", `${(0.5 - y) * 6}deg`);
-    event.currentTarget.style.setProperty("--light-x", `${x * 100}%`);
-    event.currentTarget.style.setProperty("--light-y", `${y * 100}%`);
   }
 
-  function resetLight() {
+  function resetDepth() {
     panel.current?.style.setProperty("--orbit-x", "0deg");
     panel.current?.style.setProperty("--orbit-y", "0deg");
-    panel.current?.style.setProperty("--light-x", "50%");
-    panel.current?.style.setProperty("--light-y", "45%");
   }
 
   return (
@@ -52,8 +48,8 @@ export default function Orbital() {
       ref={panel}
       className={styles.panel}
       data-running={!paused && inView && !reducedMotion}
-      onPointerMove={moveLight}
-      onPointerLeave={resetLight}
+      onPointerMove={moveDepth}
+      onPointerLeave={resetDepth}
       role="group"
       aria-label="An orbit of ideas"
       aria-describedby={descriptionId}

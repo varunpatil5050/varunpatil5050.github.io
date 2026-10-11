@@ -4,5 +4,4 @@ export const caseStudySlugs = [
   "judgment-explained",
   "streamrank",
   "signsense",
-  "syncspace",
 ];

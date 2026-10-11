@@ -11,7 +11,7 @@ const frames = [
     ],
     message:
       "A Yjs document holds shared state. Presence keeps collaborators visible.",
-    peers: ["V", "S"],
+    peers: ["VP", "S"],
     state: "Shared state",
   },
   {
@@ -23,7 +23,7 @@ const frames = [
     ],
     message:
       "Planner, Coder, Reviewer, Tester, and Debugger participate in the collaboration flow. Edits require approval.",
-    peers: ["V", "S", "A"],
+    peers: ["VP", "S", "A"],
     state: "Human approval",
   },
   {
@@ -35,7 +35,7 @@ const frames = [
     ],
     message:
       "The CRDT event log reconstructs document state and presence for read-only time travel.",
-    peers: ["V", "S", "A"],
+    peers: ["VP", "S", "A"],
     state: "Replayable history",
   },
 ];
@@ -186,8 +186,6 @@ export function LanguagePreview() {
   return (
     <div className="language-preview">
       <div className="language-graphic" aria-hidden="true">
-        <span className="language-ring ring-one" />
-        <span className="language-ring ring-two" />
         <span className="script-word" key={language}>
           {result.script}
         </span>
@@ -312,77 +310,6 @@ export function EvidencePreview() {
       <p className="visual-disclaimer">
         Architecture illustration, not a generated legal explanation.
       </p>
-    </div>
-  );
-}
-export function Miniature({ kind }: { kind: string }) {
-  if (kind === "signsense")
-    return (
-      <div className="mini-hand" aria-hidden="true">
-        <svg viewBox="0 0 200 160">
-          <path
-            d="m95 133-32-28-14-35 9-5 19 26-8-64 11-2 13 58-2-76 12-1 3 77 11-69 11 2-9 72 18-49 11 4-15 58-8 24-18 14Z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-          />
-          {[
-            [95, 133],
-            [63, 105],
-            [49, 70],
-            [77, 91],
-            [69, 27],
-            [93, 83],
-            [91, 7],
-            [106, 83],
-            [117, 14],
-            [119, 88],
-            [137, 39],
-            [122, 97],
-            [114, 121],
-            [95, 103],
-          ].map(([x, y], i) => (
-            <circle key={i} cx={x} cy={y} r={i % 3 === 0 ? 3.8 : 2.3} />
-          ))}
-          <path
-            d="m95 133 0-30-32 2m32-2 11-20 13 5m-24 15-2-20-16 8m18 12 27-6"
-            fill="none"
-            stroke="currentColor"
-            opacity=".45"
-          />
-        </svg>
-        <span>Landmarks → temporal features</span>
-      </div>
-    );
-  if (kind === "syncspace")
-    return (
-      <div className="mini-docs" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <span className="mini-peer peer-one">V</span>
-        <span className="mini-peer peer-two">S</span>
-        <small>Local edits. Shared state.</small>
-      </div>
-    );
-  return (
-    <div className="mini-pipeline" aria-hidden="true">
-      <div>
-        <span>01</span>Retrieve
-      </div>
-      <i>→</i>
-      <div>
-        <span>02</span>Rank
-      </div>
-      <i>→</i>
-      <div>
-        <span>03</span>Diversify
-      </div>
-      <i>→</i>
-      <div>
-        <span>04</span>Serve
-      </div>
-      <small>12.5M interactions → recommendations</small>
     </div>
   );
 }

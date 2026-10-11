@@ -5,15 +5,17 @@ language models, distributed systems, and product thinking.
 
 ## Included
 
-- Six direct case-study pages: Atelier, Hindi/Nepali Transformer LMs, Judgment Explained,
-  StreamRank, SignSense, and SyncSpace
+- Five full project showcases and direct case-study pages: Atelier,
+  Hindi/Nepali Transformer LMs, Judgment Explained, StreamRank, and SignSense
 - Original lime-lit solar visual with a blue halo, mixed-color revolving nodes,
-  pointer lighting, motion pause, and offscreen suspension
+  subtle pointer depth, motion pause, and offscreen suspension
 - Interactive language evaluation results, illustrative CRDT replay, and evidence tracing
 - Project-specific charcoal IDE, mint/forest, and parchment/cocoa palettes
 - Native scroll-linked depth and staged project reveals without animation libraries
 - One reversible desktop Atelier scroll story, with manual mobile/reduced-motion controls
-- Explorable architecture diagrams for StreamRank, SignSense, and SyncSpace
+- Explorable architecture diagrams for StreamRank and SignSense
+- A 21-landmark SignSense hand illustration with finger selection and a pausable scan
+- No cursor-following haze; decorative orbits appear only in the main hero
 - Active chapter navigation, native project transitions, and a copy-email action
 - Experience, education, skills, and academic achievements
 - Downloadable résumé and social/contact links

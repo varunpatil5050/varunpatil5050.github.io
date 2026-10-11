@@ -6,8 +6,6 @@ import {
   Arrow,
   ExternalLink,
   usePortfolioMotion,
-  pointerLight,
-  resetLight,
 } from "./Site";
 import {
   AtelierPreview,
@@ -15,6 +13,7 @@ import {
   EvidencePreview,
 } from "./ProjectVisuals";
 import { ArchitectureExplorer, CaseStudyReadingNav } from "./CaseStudyDetails";
+import HandScan from "./HandScan";
 import "../case-details.css";
 
 export default function CaseStudy({
@@ -75,8 +74,6 @@ export default function CaseStudy({
         <div
           className={`case-visual ${kind === "atelier" ? "dark-stage" : ""} ${kind === "judgment-explained" ? "evidence-case" : ""}`}
           data-reveal="scene"
-          onPointerMove={pointerLight}
-          onPointerLeave={resetLight}
         >
           {kind === "atelier" ? (
             <AtelierPreview />
@@ -84,6 +81,8 @@ export default function CaseStudy({
             <LanguagePreview />
           ) : kind === "judgment-explained" ? (
             <EvidencePreview />
+          ) : kind === "signsense" ? (
+            <HandScan />
           ) : (
             <ArchitectureExplorer slug={kind} />
           )}
@@ -102,6 +101,11 @@ export default function CaseStudy({
             </div>
           ))}
         </div>
+        {kind === "signsense" && (
+          <div className="case-secondary-architecture" data-reveal>
+            <ArchitectureExplorer slug={kind} compact />
+          </div>
+        )}
         <div className="case-body">
           <CaseStudyReadingNav sections={project.sections} />
           <div className="case-chapters">

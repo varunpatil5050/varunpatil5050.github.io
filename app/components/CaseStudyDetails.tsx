@@ -95,98 +95,9 @@ const architectures: Record<string, Architecture> = {
       },
     ],
   },
-  syncspace: {
-    title: "Local interaction. Shared state.",
-    subtitle: "The document manages convergence. The relay carries updates.",
-    stages: [
-      {
-        title: "Edit locally",
-        label: "Start at the editor",
-        description:
-          "CodeMirror 6 provides the local editing surface. Local interaction is separate from the delivery of updates across the network.",
-        input: "Local edits",
-        output: "Editor changes",
-      },
-      {
-        title: "Synchronize",
-        label: "Let the document converge",
-        description:
-          "Yjs manages the shared CRDT document and synchronization. The shared-document layer, rather than the relay, owns convergence.",
-        input: "Editor changes",
-        output: "CRDT document updates",
-      },
-      {
-        title: "Relay",
-        label: "Keep transport small",
-        description:
-          "A stateless FastAPI WebSocket relay carries synchronization messages between connected collaborators. Transport remains distinct from the editing engine.",
-        input: "Synchronization messages",
-        output: "Collaborator updates",
-      },
-      {
-        title: "Share presence",
-        label: "Make collaboration visible",
-        description:
-          "Shared cursors provide live collaboration context alongside document edits. Presence complements the shared document without replacing its synchronization model.",
-        input: "Collaborator context",
-        output: "Shared cursors",
-      },
-    ],
-  },
 };
 
 function PipelineDiagram({ kind, active }: { kind: string; active: number }) {
-  if (kind === "syncspace") {
-    return (
-      <div
-        className="architecture-network"
-        aria-hidden="true"
-        data-stage={active}
-      >
-        <div className="network-editor network-editor-local">
-          <div className="network-document">
-            <i />
-            <i />
-            <i />
-            <i />
-            <span />
-          </div>
-          <span>Local editor</span>
-          <small>CodeMirror 6 + Yjs</small>
-        </div>
-        <div className="network-connection">
-          <span>↔</span>
-          <small>document updates</small>
-        </div>
-        <div className="network-relay">
-          <span className="relay-symbol">↔</span>
-          <b>WebSocket relay</b>
-          <small>FastAPI / stateless</small>
-        </div>
-        <div className="network-connection">
-          <span>↔</span>
-          <small>document updates</small>
-        </div>
-        <div className="network-editor network-editor-peer">
-          <div className="network-document">
-            <i />
-            <i />
-            <i />
-            <i />
-            <span />
-          </div>
-          <span>Collaborator</span>
-          <small>CodeMirror 6 + Yjs</small>
-        </div>
-        <p className="network-presence">
-          <i />
-          <span>Shared cursors / live collaboration context</span>
-          <i />
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div
       className={`architecture-pipeline ${kind === "signsense" ? "signal-pipeline" : "ranking-pipeline"}`}
@@ -201,33 +112,10 @@ function PipelineDiagram({ kind, active }: { kind: string; active: number }) {
           <span className="pipeline-position">0{stage + 1}</span>
           <div className={`pipeline-glyph glyph-${stage}`}>
             {kind === "signsense" && stage === 0 ? (
-              <svg viewBox="0 0 120 120" fill="none">
-                <path
-                  d="m40 102-21-22-7-24 7-3 14 20-6-50 8-1 9 43-1-56 9-1 3 56 9-50 8 2-6 52 12-34 8 3-9 39-9 20-13 9Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="m40 102 8-27-15-2m15 2-4-10m4 10 7-11m-7 11 18-7m-18 7 26 2"
-                  stroke="currentColor"
-                  opacity=".5"
-                />
-                {[
-                  [40, 102],
-                  [48, 75],
-                  [33, 73],
-                  [27, 23],
-                  [44, 65],
-                  [43, 9],
-                  [55, 64],
-                  [64, 14],
-                  [66, 68],
-                  [78, 34],
-                  [74, 77],
-                ].map(([x, y], i) => (
-                  <circle key={i} cx={x} cy={y} r="2.4" fill="currentColor" />
-                ))}
-              </svg>
+              <div className="landmark-count">
+                <span>21</span>
+                <small>hand landmarks</small>
+              </div>
             ) : (
               Array.from({ length: kind === "signsense" ? 12 : 6 }, (_, i) => (
                 <i key={i} />
@@ -242,7 +130,13 @@ function PipelineDiagram({ kind, active }: { kind: string; active: number }) {
   );
 }
 
-export function ArchitectureExplorer({ slug }: { slug: string }) {
+export function ArchitectureExplorer({
+  slug,
+  compact = false,
+}: {
+  slug: string;
+  compact?: boolean;
+}) {
   const [selected, setSelected] = useState(0);
   const descriptionId = useId();
   const architecture = architectures[slug];
@@ -251,18 +145,14 @@ export function ArchitectureExplorer({ slug }: { slug: string }) {
 
   return (
     <section
-      className={`architecture-explorer explorer-${slug}`}
+      className={`architecture-explorer explorer-${slug}${compact ? " architecture-explorer-compact" : ""}`}
       aria-label="Interactive system architecture"
     >
       <header className="architecture-explorer-heading">
         <div>
           <p>
             System study /{" "}
-            {slug === "signsense"
-              ? "Temporal recognition"
-              : slug === "streamrank"
-                ? "Recommendation"
-                : "Shared state"}
+            {slug === "signsense" ? "Temporal recognition" : "Recommendation"}
           </p>
           <h2>{architecture.title}</h2>
         </div>

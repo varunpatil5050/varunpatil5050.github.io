@@ -2,43 +2,40 @@
 
 Checked the actual static production export, not only the development server.
 
-- Production build and eight rendered/exported HTML tests pass.
+## Five-project / hand-scan refinement
+
+- Production build and seven rendered/exported HTML tests pass. The homepage
+  contains five full showcases; every case is directly exported. SyncSpace is
+  absent from the homepage, case rotation, route list, and sitemap. Its old
+  local static route returns 404.
 - Strict frontend TypeScript check passes for the homepage, shared components,
   layout, dynamic case-study route, and not-found page.
-- Chrome desktop and responsive widths 320, 390, 600, 768, 1024, and 1440:
-  no document horizontal overflow.
-- All six case studies directly load with the correct page title; each also
-  passes the 390px overflow check. No browser runtime errors or failed asset
-  requests were observed during these checks.
-- Orbit pause/resume, pointer lighting, collaboration sequence buttons,
-  keyboard activation, Hindi/Nepali results, evidence steps, mobile navigation,
-  Escape focus return, and reduced-motion behavior were exercised.
-- Axe WCAG A/AA automated checks report no violations on the homepage and the
-  Atelier, Transformer LMs, and Judgment Explained case studies. This is not a
-  claim of a complete manual accessibility audit.
-- Desktop hero, full-page composition, individual featured projects, mobile
-  hero/language preview, and desktop/mobile case-study screenshots inspected.
-- Repeated build, interaction, responsive, and automated accessibility checks
-  after the charcoal, mint, and parchment project palette refinement. Original
-  solar component and styling remain unchanged.
-- Atelier's pinned desktop sequence checked forward and backward, including
-  manual selection persistence. Mobile and reduced-motion modes verified as
-  unpinned, with working controls.
-- All twelve architecture stage controls exercised with the keyboard. Chapter
-  anchor alignment and active reading progress verified after correcting the
-  combined scroll-padding/scroll-margin offset.
-- Actual clipboard write/read checked for the contact email, with visible
-  success feedback. Magnetic-link reset and reduced-motion behavior checked.
-- Scroll-linked featured-surface scale changed continuously with actual scroll
-  position; native cross-document title transition observed in Chrome. Normal
-  direct case navigation and reduced-motion fallback also checked.
-- New architecture routes checked at 320, 390, 768, and 1440 widths. Axe checks
-  include all three routes on desktop/mobile and every selectable stage; a
-  SyncSpace relay-label contrast edge case was fixed and retested.
+- Each project's scene remains visible after pointer hover and a component
+  interaction. Reveal state persists separately from React-managed classes.
+- The hand illustration contains exactly 21 unique indices (0–20) and the
+  anatomical landmark connections. All five finger controls select the correct
+  four-node chain using the keyboard.
+- Hand-scan pause/resume, offscreen suspension, and reduced-motion static view
+  work. The illustration does not claim camera input or model output.
+- Cursor-light pseudo-elements are absent on the project surfaces, solar
+  panel, and footer. The solar's fixed halo remains; other decorative orbit
+  elements are absent. Header, About, and favicon use VP.
+- Homepage at 320, 390, 768, and 1440px has no horizontal overflow. All five
+  cases also pass 320, 390, and 768px overflow checks.
+- All eight architecture-stage controls across StreamRank and SignSense were
+  exercised with the keyboard; five-case next-project rotation is correct.
+- Axe WCAG A/AA automated checks report no violations on the homepage and all
+  five case studies in the sampled reduced-motion state. This is not a claim
+  of a complete manual accessibility audit.
+- Desktop hero, both new full showcases, SignSense case visual, mobile project
+  compositions, and mobile VP monogram screenshots were visually inspected.
+- No browser runtime errors were observed in this pass. No new dependencies.
 
-Local Chrome observations showed no initial layout shift in the sampled desktop
-and mobile loads. These are local checks, not production performance scores.
+Earlier passes checked Atelier's reversible desktop sticky story and manual
+mobile alternative, contact clipboard feedback, magnetic buttons, chapter
+reading navigation, language/evidence controls, native project transitions,
+and mobile navigation. Those checks are historical, not newly rerun in full.
 
 Not tested: Safari/Firefox, actual low-power devices, a screen-reader session,
 and production Core Web Vitals. The current source uses no WebGL, external
-animation library, or scroll-hijacking layer.
+animation library, or scroll-hijacking layer. Changes remain local pending approval.

@@ -2,12 +2,10 @@
 .feature-atelier,
 .case-visual.dark-stage {
   --project-accent: #75beff;
-  --project-light: #75beff12;
 }
 .language-composition,
 .case-visual .language-preview {
   --project-accent: #497957;
-  --project-light: #72b67e12;
   --project-ink: #243c2c;
   --project-muted: #526b58;
   background: #e8f3e9;
@@ -15,18 +13,8 @@
 }
 .evidence-art,
 .case-visual.evidence-case {
-  --project-light: #ce9b6514;
   background: #f2e7da;
   border-color: #e1d2bf;
-}
-.project-stage::after,
-.language-composition::after,
-.evidence-art::after {
-  background: radial-gradient(
-    600px circle at var(--mx, 50%) var(--my, 40%),
-    var(--project-light, #ffffff0d),
-    transparent 65%
-  );
 }
 
 /* Atelier / graphite IDE, crisp blue selection, readable syntax colors. */
@@ -194,9 +182,6 @@
 .language-graphic {
   color: #2e5639;
 }
-.language-ring {
-  border-color: #608c6b30;
-}
 .model-label,
 .token {
   color: #4f6e56;
@@ -361,13 +346,6 @@
 }
 .contact-section h2 em {
   color: #d8e8bd;
-}
-.contact-section::before {
-  background: radial-gradient(
-    ellipse at var(--mx, 85%) var(--my, 75%),
-    #b3c88b10,
-    transparent 65%
-  );
 }
 .contact-email svg {
   color: #d8e8bd;

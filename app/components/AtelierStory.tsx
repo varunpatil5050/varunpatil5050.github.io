@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AtelierPreview } from "./ProjectVisuals";
-import { pointerLight, resetLight } from "./Site";
 import "../atelier-story.css";
 
 const chapterNames = ["Shared state", "Human approval", "Replayable history"];
@@ -107,12 +106,7 @@ export default function AtelierStory() {
   return (
     <div ref={story} className="atelier-story" data-scroll={scrollEnabled}>
       <div ref={pin} className="atelier-story-pin">
-        <div
-          className="project-stage dark-stage"
-          data-reveal="scene"
-          onPointerMove={pointerLight}
-          onPointerLeave={resetLight}
-        >
+        <div className="project-stage dark-stage" data-reveal="scene">
           <AtelierPreview step={step} onStepChange={chooseStep} />
         </div>
         <div className="atelier-story-caption" aria-hidden="true">

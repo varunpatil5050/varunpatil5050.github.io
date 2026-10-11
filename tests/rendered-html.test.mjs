@@ -32,8 +32,11 @@ test("renders Varun Patil's complete portfolio", async () => {
   assert.match(html, /Atelier/);
   assert.match(html, /StreamRank/);
   assert.match(html, /SignSense/);
-  assert.match(html, /SyncSpace/);
-  assert.match(html, /work\/syncspace/);
+  assert.doesNotMatch(html, /SyncSpace|syncspace|index-project/);
+  assert.equal((html.match(/class="feature feature-/g) ?? []).length, 5);
+  assert.match(html, /class="brand-mark">VP</);
+  assert.equal((html.match(/data-landmark="\d+"/g) ?? []).length, 21);
+  assert.doesNotMatch(html, /class="language-ring|class="about-mark/);
   assert.match(html, /Data Axle/);
   assert.match(html, /Shaastra Techathon/i);
   assert.match(html, /Varun-Patil-Resume\.pdf/);
@@ -65,11 +68,15 @@ for (const slug of caseStudySlugs) {
     assert.match(html, /Next exploration/);
     assert.match(html, /Varun-Patil-Resume\.pdf/);
     assert.ok(html.includes(`project-${slug}`));
-    if (["streamrank", "signsense", "syncspace"].includes(slug)) {
+    if (["streamrank", "signsense"].includes(slug)) {
       assert.match(html, /Interactive system architecture/);
       assert.match(html, /Select an architecture stage/);
       assert.match(html, /Conceptual architecture illustration/);
     }
+    if (slug === "signsense") {
+      assert.equal((html.match(/data-landmark="\d+"/g) ?? []).length, 21);
+    }
+    assert.doesNotMatch(html, /SyncSpace|syncspace/);
     assert.doesNotMatch(html, /Building your site|Application error/);
   });
 }
@@ -87,4 +94,6 @@ test("exports a real 404 and discoverable sitemap", async () => {
   );
   for (const slug of caseStudySlugs)
     assert.ok(sitemap.includes(`/work/${slug}/`));
+  assert.equal(caseStudySlugs.length, 5);
+  assert.doesNotMatch(sitemap, /syncspace/);
 });

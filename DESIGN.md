@@ -20,8 +20,8 @@ between software, intelligence, and product, not an arbitrary particle effect.
 Project-specific materials are maintained in `app/project-palettes.css`:
 Atelier uses neutral near-black IDE panels and blue/cream/green syntax;
 TransformerLMs uses fresh mint with deep forest ink; Judgment Explained uses
-parchment, cocoa and brass. Smaller studies use powder blue, peach-on-ink, and
-pale mint. The original solar panel is unchanged. These local palettes vary
+parchment, cocoa and brass. StreamRank uses powder blue; SignSense uses
+peach-on-ink. All five projects receive full-sized showcases. These local palettes vary
 the work without recoloring the overall ivory identity.
 
 ## Motion system
@@ -30,8 +30,9 @@ Primary ease: `cubic-bezier(.16,1,.3,1)`. Feedback 200–400 ms, entrances
 750–1200 ms. Native scrolling remains untouched. Passive, frame-coalesced
 listeners control page progress, hero field rotation, and restrained
 project depth. Reveals run once; featured surfaces also expand gently with
-actual scroll progress. Pointer light and small perspective changes
-make the project compositions tactile without replacing the cursor.
+actual scroll progress. Pointer-following light and haze are removed completely.
+The hero alone retains subtle pointer-responsive perspective; its blue halo is fixed.
+Decorative elliptical paths are limited to the main hero orbital.
 
 Atelier has one short sticky story on roomy desktop screens: shared state,
 human-approved agent proposals, then replay. It reverses with native scrolling.
@@ -55,11 +56,18 @@ previews are labeled, not passed off as screenshots, backend responses, or
 model output. Reported metrics retain their evaluation scope. The résumé is the
 provided October 2026 file; unsupported adoption claims are excluded.
 
-StreamRank, SignSense, and SyncSpace have keyboard-operable conceptual
+StreamRank and SignSense have keyboard-operable conceptual
 architecture explorers. Each stage explains its responsibility, input, and
 output. Case studies include chapter navigation and reading progress; technical
 copy stays still. Contact exposes the actual email prominently, with a real
 clipboard action and an honest fallback if clipboard access is unavailable.
+
+SignSense's primary visual is an anatomical hand with the 21 MediaPipe landmark
+indices and connections. Finger controls highlight each four-point chain. A
+horizontal scanning line is pausable and suspended offscreen; reduced motion
+uses a static view. The component is explicitly an illustration, not a camera
+feed or model result. Reveal persistence uses a data attribute independent of
+React-managed class names so hover and interactive state cannot hide content.
 
 ## Reference study
 
