@@ -19,25 +19,25 @@ export const metadata: Metadata = {
   description:
     "Language models from scratch, real-time collaboration, and evidence-grounded LLM systems. Selected work by Varun Patil, M.Tech at IIIT Hyderabad.",
   openGraph: {
-    title: "Varun Patil — Intelligence, built to work.",
+    title: "Varun Patil — Engineering intelligence into motion.",
     description:
       "Software engineering, language models, and real-time systems. From first principles to the last interaction.",
     type: "website",
     images: [
       {
-        url: "/og-v3.png",
+        url: "/og-v4.png",
         width: 1200,
         height: 630,
-        alt: "Varun Patil — Intelligence, built to work.",
+        alt: "Varun Patil — Engineering intelligence into motion.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Varun Patil — Intelligence, built to work.",
+    title: "Varun Patil — Engineering intelligence into motion.",
     description:
       "Software engineering, language models, and real-time systems.",
-    images: ["/og-v3.png"],
+    images: ["/og-v4.png"],
   },
 };
 
