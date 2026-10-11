@@ -60,11 +60,6 @@ export default function Orbital() {
       </p>
 
       <div className={styles.instrument} aria-hidden="true">
-        <div className={styles.masthead}>
-          <span>VP / AN ORBIT OF IDEAS</span>
-          <span className={styles.instrumentMark}>✳</span>
-        </div>
-
         <div className={styles.atmosphere} />
         <div className={styles.field}>
           <div className={styles.axisHorizontal} />
