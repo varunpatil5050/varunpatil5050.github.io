@@ -7,7 +7,9 @@ async function render() {
   const { default: worker } = await import(workerUrl.href);
   return worker.fetch(
     new Request("http://localhost/", { headers: { accept: "text/html" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    {
+      ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
+    },
     { waitUntil() {}, passThroughOnException() {} },
   );
 }
@@ -19,14 +21,21 @@ test("renders Varun Patil's complete portfolio", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Varun Patil/);
-  assert.match(html, /Engineering/);
-  assert.match(html, /intelligence/);
+  assert.match(html, /Intelligence/);
+  assert.match(html, /built to work/);
+  assert.match(html, /Transformer LMs/);
+  assert.match(html, /hindi-nepali-transformers-from-scratch/);
+  assert.match(html, /Judgment Explained/);
   assert.match(html, /Atelier/);
   assert.match(html, /StreamRank/);
   assert.match(html, /SignSense/);
   assert.match(html, /SyncSpace/);
   assert.match(html, /github\.com\/varunpatil5050\/SyncSpace/);
   assert.match(html, /Data Axle/);
+  assert.match(html, /Shaastra Techathon 2024/i);
   assert.match(html, /Varun-Patil-Resume\.pdf/);
-  assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
+  assert.doesNotMatch(
+    html,
+    /codex-preview|Building your site|react-loading-skeleton/,
+  );
 });

@@ -14,23 +14,36 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://varunpatil5050.github.io"),
-  title: "Varun Patil — ML & Software Engineer",
-  description: "Varun Patil engineers intelligent products across machine learning, distributed systems, and thoughtful design.",
+  icons: { icon: "/favicon.svg" },
+  title: "Varun Patil — Software Engineer · ML & LLM Systems",
+  description:
+    "Language models from scratch, real-time collaboration, and evidence-grounded LLM systems. Selected work by Varun Patil, M.Tech at IIIT Hyderabad.",
   openGraph: {
-    title: "Varun Patil — ML & Software Engineer",
-    description: "Engineering intelligence into motion.",
+    title: "Varun Patil — Intelligence, built to work.",
+    description:
+      "Software engineering, language models, and real-time systems. From first principles to the last interaction.",
     type: "website",
-    images: [{ url: "/og-v2.png", width: 1731, height: 909, alt: "Varun Patil — engineering intelligence into motion" }],
+    images: [
+      {
+        url: "/og-v3.png",
+        width: 1200,
+        height: 630,
+        alt: "Varun Patil — Intelligence, built to work.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Varun Patil — ML & Software Engineer",
-    description: "Engineering intelligence into motion.",
-    images: ["/og-v2.png"],
+    title: "Varun Patil — Intelligence, built to work.",
+    description:
+      "Software engineering, language models, and real-time systems.",
+    images: ["/og-v3.png"],
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
